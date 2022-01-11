@@ -12,6 +12,14 @@
   color:cornflowerblue
 }
 
-/* .Header {
-  display: flex;
-} */
+.StudentDetail,
+.CompanyDeatils {
+  width:  90%;
+  margin: 3em auto;
+}
+
+.StudentDetail form {
+  width: 90%;
+  margin: 2rem auto;
+  padding: 3rem !important;
+}

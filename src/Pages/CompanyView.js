@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+
 
 function CompanyView() {
     return (
@@ -9,8 +11,12 @@ function CompanyView() {
                     <p className='text-secondary'> Consultancy Firm </p>
                 </div>
                 <div className="btn-container">
-                    <button className='btn btn-primary m-3'>Selected Student list</button>
-                    <button className='btn btn-info m-3'>View Details</button>
+                    <Link to="/company/selected">
+                        <button className='btn btn-primary m-3'>Selected Student list</button>
+                    </Link>
+                    <Link to="/company/details">
+                        <button className='btn btn-info m-3'>View Details</button>
+                    </Link>
                 </div>
             </section>
         </main>
