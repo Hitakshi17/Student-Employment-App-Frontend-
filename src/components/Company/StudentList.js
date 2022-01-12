@@ -41,10 +41,10 @@ function StudentList() {
 
             </section>
 
-            {/* <MyVerticallyCenteredModal
+            {modalShow && <MyVerticallyCenteredModal
                 show={modalShow}
-                setModalShow
-            /> */}
+                onHide={() => setModalShow(false)}
+            />}
 
 
         </main>
