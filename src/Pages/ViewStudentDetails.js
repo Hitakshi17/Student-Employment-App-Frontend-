@@ -5,7 +5,7 @@ function ViewStudentDetails() {
 
     const [StudentDetail, setStudentDetail] = useState({
         name: "Rachana Jadhav",
-        pnone: +911234567891,
+        phno: +911234567891,
         email: "rachana@email.com",
         clgName: "ABC College",
         CGPA: 8.5,

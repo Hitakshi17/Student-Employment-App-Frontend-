@@ -14,7 +14,6 @@ import ViewStudentDetails from './Pages/ViewStudentDetails';
 import SelectedBy from './Pages/SelectedBy';
 import ViewCompanyDetails from './Pages/ViewCompanyDetails';
 import SelectedStudent from './Pages/SelectedStudent';
-import MyVerticallyCenteredModal from './components/Modal';
 
 
 
