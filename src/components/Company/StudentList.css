@@ -1,0 +1,11 @@
+.studentList{
+    margin: 3rem;
+}
+
+.custom-btn {
+    border: none;
+    background-color: none;
+    background: none;
+    text-decoration: none;
+    padding: 0;
+}

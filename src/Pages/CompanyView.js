@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import StudentList from '../components/Company/StudentList';
 
 
 function CompanyView() {
     return (
         <main className='container'>
-            <section className='card mt-3 d-flex flex-row justify-content-between p-3'>
+            <section className='card mt-3 d-flex flex-row justify-content-between p-3 custom-shadow'>
                 <div>
                     <h1>XYZ Company</h1>
                     <p className='text-secondary'> Consultancy Firm </p>
@@ -19,6 +20,8 @@ function CompanyView() {
                     </Link>
                 </div>
             </section>
+
+            <StudentList />
         </main>
     )
 }

@@ -15,7 +15,7 @@ function ViewStudentDetails() {
     return (
         <div className='container StudentDetail'>
             <h1>Studets Details Page </h1>
-            <form className='form-group border rounded'>
+            <form className='form-group border rounded custom-shadow'>
                 <div className="form-row">
                     <div classname="form-group col-md-5">
                         <label for="inputEmail4">Name</label>
@@ -49,7 +49,7 @@ function ViewStudentDetails() {
                     <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
                 </div>
 
-                <button type="submit" className="btn btn-primary m-3">Update</button>
+                <button type="submit" className="btn btn-primary m-3 custom-shadow">Update</button>
             </form>
         </div>
     )

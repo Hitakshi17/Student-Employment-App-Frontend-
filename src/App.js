@@ -14,6 +14,7 @@ import ViewStudentDetails from './Pages/ViewStudentDetails';
 import SelectedBy from './Pages/SelectedBy';
 import ViewCompanyDetails from './Pages/ViewCompanyDetails';
 import SelectedStudent from './Pages/SelectedStudent';
+import MyVerticallyCenteredModal from './components/Modal';
 
 
 
@@ -22,30 +23,19 @@ function App() {
     <div>
         <BrowserRouter>
           <HeaderComponent />
-            <div className="container">    
+            <div className="container App">    
+
               <Routes>
+
                 <Route exact path="/" element={<Home />} />
-              </Routes>
-              <Routes>
                 <Route exact path="/student" element={<StudentView />} />
-              </Routes>
-              <Routes>
                 <Route exact path="/student/details" element={<ViewStudentDetails />} />
-              </Routes>
-              <Routes>
                 <Route exact path="/student/selectedby" element={<SelectedBy />} />
-              </Routes>
-              
-              <Routes>
                 <Route exact path="/company" element={<CompanyView />} />
-              </Routes>
-              <Routes>
                 <Route exact path="/company/details" element={<ViewCompanyDetails />} />
-              </Routes>
-              <Routes>
                 <Route exact path="/company/selected" element={<SelectedStudent />} />
+                
               </Routes>
-              
               
             </div>
           <FooterComponent />
