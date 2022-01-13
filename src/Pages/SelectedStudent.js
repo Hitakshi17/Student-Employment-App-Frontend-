@@ -2,9 +2,9 @@ import React from 'react'
 
 function SelectedStudent() {
     return (
-        <div>
+        <main>
             
-        </div>
+        </main>
     )
 }
 

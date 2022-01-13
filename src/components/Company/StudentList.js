@@ -72,7 +72,7 @@ function StudentList() {
 
                 <div className="button-container d-flex align-items-center justify-content-between col-md-2">
                     <button type="submit" className='btn btn-success'>Accept</button>
-                    <button type="submit" className='btn btn-danger'>Reject</button>
+                    <button type="submit" className='btn btn-danger' >Reject</button>
                 </div>
 
                 <MyVerticallyCenteredModal
@@ -91,3 +91,4 @@ function StudentList() {
 }
 
 export default StudentList
+ 

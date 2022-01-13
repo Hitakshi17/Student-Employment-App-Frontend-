@@ -31,3 +31,40 @@ function SelectedBy() {
 }
 
 export default SelectedBy
+
+
+
+/* 
+
+    ============================================================
+    INSERTION QUERY
+    ============================================================
+
+    if a student accepts a company 
+
+    selected table will have an insertion  isApplied = true 
+
+    post(studentid, company, isApplied="true")
+
+    selectedID - 2
+    stdID - 3
+    CompanyID - 5
+    IsApplied - 1 
+    IsSelected - Null
+
+
+
+    =======================================================
+    update query 
+    =======================================================
+
+    if student is selected by a company  isSelected = true
+
+    selectedID - 2
+    stdID - 3
+    CompanyID - 5
+    IsApplied - 1
+    IsSelected - 1 // true 
+    
+
+*/

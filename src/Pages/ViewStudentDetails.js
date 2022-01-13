@@ -50,6 +50,8 @@ function ViewStudentDetails() {
                 </div>
 
                 <button type="submit" className="btn btn-primary m-3 custom-shadow">Update</button>
+                <button type="submit" className="btn btn-danger m-3 custom-shadow">Delete Account</button>
+
             </form>
         </div>
     )
