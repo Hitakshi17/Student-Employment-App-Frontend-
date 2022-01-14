@@ -10,9 +10,6 @@ import "./CompanyList.css"
 function MyVerticallyCenteredModal(props) {
 
     const {...details} = props.details;
-
-
-    console.log(props.details);
     
     return (
         <Modal
@@ -78,16 +75,15 @@ function CompanyList() {
 
                     return (
                         <section key = {comp_id} 
-                            onClick={() => {
-                                setModalShow(true);
-                                setModalData(company);
-                            }}
                         className='card card-box p-3 d-flex flex-row justify-content-between mt-3'>
 
                             <div className=' col-md-9 '>
                                 <button 
                                 className="custom-btn"
-                                
+                                    onClick={() => {
+                                        setModalShow(true);
+                                        setModalData(company);
+                                    }}
                                 >
                                     <h3>
                                         {cname}

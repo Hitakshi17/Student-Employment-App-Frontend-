@@ -1,59 +1,117 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { Button, Form, Modal } from 'react-bootstrap';
 import "../App.css"
+
+function MyVerticallyCenteredModal(props) {
+
+    const [cgpa, setCgpa] = useState(0);
+    const [skills, setSkills] = useState(" ");
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // try {
+        //      await axios.post(URL, {
+        //         cgpa : cgpa,
+        //         t_skills : "skills",
+        //     });
+        // } catch (error) {
+        //     console.error(error.message);
+        // };
+        
+        
+    }
+
+    return (
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Edit Form
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+
+                <Form>
+                    <Form.Group className="mb-3" controlId="cgpa">
+                        <Form.Label>CGPA</Form.Label>
+                        <Form.Control type="number" placeholder="Enter New CGPA" onChange={(e) => setCgpa(e.target.value)}/>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="t_skills">
+                        <Form.Label>Edit Technical Skills </Form.Label>
+                        <Form.Control type="text" placeholder="t_skills" onChange={(e) => setSkills(e.target.value)} />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Edit
+                    </Button>
+                </Form>
+                
+            </Modal.Body>
+            <Modal.Footer>
+                <Button onClick={handleSubmit} className='btn btn-success' type="submit"> Edit </Button>
+                <Button onClick={props.onHide}>Close</Button>
+            </Modal.Footer>
+        </Modal>
+    );
+}
+
+
 
 function ViewStudentDetails() {
 
-    const [StudentDetail, setStudentDetail] = useState({
-        name: "Rachana Jadhav",
-        phno: +911234567891,
-        email: "rachana@email.com",
-        clgName: "ABC College",
-        CGPA: 8.5,
-        technicalSkills: ["HTML", "React", "Css", "Js"]
-    })
+    const [studentDetail, setStudentDetail] = useState({});
+
+    // Modal Form for edit details 
+    const [modalShow, setModalShow] = React.useState(false);
+
+    const URL = "http://localhost:8080/api/students/3"
+
+    useEffect(() => {
+        const fetchData = async () => {
+
+            try {
+                const { data: response } = await axios.get(URL);
+                console.log(response);
+                setStudentDetail(response);
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+
+        fetchData();
+    }, []);
 
     return (
-        <div className='container StudentDetail'>
+        <main className='container StudentDetail'>
+
             <h1>Studets Details Page </h1>
-            <form className='form-group border rounded custom-shadow'>
-                <div className="form-row">
-                    <div classname="form-group col-md-5">
-                        <label for="inputEmail4">Name</label>
-                        <input type="email" className="form-control" id="inputEmail4" placeholder="Email" />
-                    </div>
-                    <div className='d-flex flex-row justify-content-between'>
-                        <div className="form-group col-md-5">
-                            <label for="inputPassword4">Phone Number</label>
-                            <input type="password" className="form-control" id="inputPassword4" placeholder="Password" />
-                        </div>
-                        <div className="form-group col-md-5 ">
-                            <label for="inputPassword4">Email Address</label>
-                            <input type="password" className="form-control" id="inputPassword4" placeholder="Password" />
-                        </div>
-                    </div>
+
+            <section className="card text-center CompanyDeatils custom-shadow">
+
+                <div className="card-body">
+                    <h1 className="card-title">{studentDetail.sname}</h1>
+                    <h4 className="card-text">{studentDetail.smob}</h4>
+                    <h4 className="card-text">{studentDetail.semail}</h4>
+                    <p className="card-text">{studentDetail.clg}</p>
+                    <p className="card-text">{studentDetail.cgpa}</p>
+                    <p className="card-text">{studentDetail.t_skills}</p>
+                    <button className='btn btn-primary' onClick= {() => setModalShow(true)} >edit your details</button>
                 </div>
 
-                <div className='d-flex flex-row justify-content-between'>
-                    <div className="form-group col-md-5">
-                        <label for="inputPassword4">Collge Name</label>
-                        <input type="password" className="form-control" id="inputPassword4" placeholder="Password" />
-                    </div>
-                    <div className="form-group col-md-5 ">
-                        <label for="inputPassword4">CGPA <span className='text-secondary'> (based in 10)* </span></label>
-                        <input type="password" className="form-control" id="inputPassword4" placeholder="Password" />
-                    </div>
-                </div>
+            </section>
 
-                <div className="form-group">
-                    <label for="inputAddress2">Technical Skills <span className='text-secondary'> (Maximum 5)* </span></label>
-                    <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
-                </div>
+            <MyVerticallyCenteredModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
 
-                <button type="submit" className="btn btn-primary m-3 custom-shadow">Update</button>
-                <button type="submit" className="btn btn-danger m-3 custom-shadow">Delete Account</button>
-
-            </form>
-        </div>
+        </main>
     )
 }
 
