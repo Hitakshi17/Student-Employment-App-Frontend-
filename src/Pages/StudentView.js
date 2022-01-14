@@ -7,13 +7,13 @@ function StudentView() {
 
     const [studentDetail, setStudentDetail] = useState({});
 
-    const URL = "http://localhost:8080/api/students/"
+    const URL = "http://localhost:8080/api/student/4"
 
     useEffect(() => {
         const fetchData = async () => {
 
             try {
-                const { data: response } = await axios.get( `${URL}4` );
+                const { data: response } = await axios.get( URL );
                 console.log(response);
                 setStudentDetail(response);
             } catch (error) {

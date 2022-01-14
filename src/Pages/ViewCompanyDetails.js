@@ -1,20 +1,34 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 
 function ViewCompanyDetails() {
-    const [companyDetail, setCompanyDetail] = useState({
-        name: "XYZ Company",
-        phno: +911234567891,
-        email: "company@email.com",
-        jobDescription: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt eos reiciendis sit odio repudiandae soluta voluptatibus incidunt dignissimos non quibusdam.",
-    })
+    
+    const [companyDetail, setCompanyDetail] = useState({});
+
+    const URL = "http://localhost:8080/api/companies/2"
+
+    useEffect(() => {
+        const fetchData = async () => {
+
+            try {
+                const { data: response } = await axios.get(URL);
+                console.log(response);
+                setCompanyDetail(response);
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+
+        fetchData();
+    }, []);
 
     return (
         <div className="card text-center CompanyDeatils custom-shadow">
             <div className="card-body">
-                <h1 className="card-title">{companyDetail.name}</h1>
-                <h4 className="card-text">{companyDetail.phno}</h4>
-                <h4 className="card-text">{companyDetail.email}</h4>
-                <p className="card-text">{companyDetail.jobDescription}</p>
+                <h1 className="card-title">{companyDetail.cname}</h1>
+                <h4 className="card-text">{companyDetail.cmob}</h4>
+                <h4 className="card-text">{companyDetail.cemail}</h4>
+                <p className="card-text">{companyDetail.jd}</p>
                 <a href="#" className="btn btn-primary">Visit our website</a>
             </div>
         </div>

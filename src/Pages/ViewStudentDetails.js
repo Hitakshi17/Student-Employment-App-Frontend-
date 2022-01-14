@@ -5,22 +5,27 @@ import "../App.css"
 
 function MyVerticallyCenteredModal(props) {
 
-    const [cgpa, setCgpa] = useState(0);
+    const [newCgpa, setNewCgpa] = useState(0);
     const [skills, setSkills] = useState(" ");
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
 
-        // try {
-        //      await axios.post(URL, {
-        //         cgpa : cgpa,
-        //         t_skills : "skills",
-        //     });
-        // } catch (error) {
-        //     console.error(error.message);
-        // };
-        
-        
+        console.log(newCgpa)
+        console.log(skills);
+
+        try {
+            const res = await axios.put('http://localhost:8080/api/students/update/',
+                {
+                    id: 4,
+                    cgpa: newCgpa,
+                    T_skills: skills,
+                });
+            console.log(res);
+        } catch (error) {
+            console.error(error.message);
+        };
+
+
     }
 
     return (
@@ -40,18 +45,15 @@ function MyVerticallyCenteredModal(props) {
                 <Form>
                     <Form.Group className="mb-3" controlId="cgpa">
                         <Form.Label>CGPA</Form.Label>
-                        <Form.Control type="number" placeholder="Enter New CGPA" onChange={(e) => setCgpa(e.target.value)}/>
+                        <Form.Control type="number" placeholder="Enter New CGPA" onChange={(e) => setNewCgpa(e.target.value)} />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="t_skills">
                         <Form.Label>Edit Technical Skills </Form.Label>
                         <Form.Control type="text" placeholder="t_skills" onChange={(e) => setSkills(e.target.value)} />
                     </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Edit
-                    </Button>
                 </Form>
-                
+
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={handleSubmit} className='btn btn-success' type="submit"> Edit </Button>
@@ -70,7 +72,7 @@ function ViewStudentDetails() {
     // Modal Form for edit details 
     const [modalShow, setModalShow] = React.useState(false);
 
-    const URL = "http://localhost:8080/api/students/3"
+    const URL = "http://localhost:8080/api/student/4"
 
     useEffect(() => {
         const fetchData = async () => {
@@ -101,7 +103,7 @@ function ViewStudentDetails() {
                     <p className="card-text">{studentDetail.clg}</p>
                     <p className="card-text">{studentDetail.cgpa}</p>
                     <p className="card-text">{studentDetail.t_skills}</p>
-                    <button className='btn btn-primary' onClick= {() => setModalShow(true)} >edit your details</button>
+                    <button className='btn btn-primary' onClick={() => setModalShow(true)} >edit your details</button>
                 </div>
 
             </section>
