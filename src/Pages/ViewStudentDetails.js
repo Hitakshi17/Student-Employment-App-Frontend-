@@ -14,17 +14,16 @@ function MyVerticallyCenteredModal(props) {
         console.log(skills);
 
         try {
-            const res = await axios.put('http://localhost:8080/api/students/update/',
+            const res = await axios.put('http://localhost:8080/api/students/',
                 {
-                    id: 4,
+                    std_id: 7,
                     cgpa: newCgpa,
-                    T_skills: skills,
+                    t_skills: skills,
                 });
             console.log(res);
         } catch (error) {
             console.error(error.message);
         };
-
 
     }
 
@@ -72,7 +71,7 @@ function ViewStudentDetails() {
     // Modal Form for edit details 
     const [modalShow, setModalShow] = React.useState(false);
 
-    const URL = "http://localhost:8080/api/student/4"
+    const URL = "http://localhost:8080/api/students/7"
 
     useEffect(() => {
         const fetchData = async () => {
@@ -87,7 +86,7 @@ function ViewStudentDetails() {
         }
 
         fetchData();
-    }, []);
+    }, [studentDetail.cgpa, studentDetail.t_skills]);
 
     return (
         <main className='container StudentDetail'>

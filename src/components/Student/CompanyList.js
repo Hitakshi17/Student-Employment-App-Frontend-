@@ -10,6 +10,7 @@ import "./CompanyList.css"
 function MyVerticallyCenteredModal(props) {
 
     const {...details} = props.details;
+
     
     return (
         <Modal
@@ -49,7 +50,7 @@ function CompanyList() {
 
             try {
                 const { data: response } = await axios.get(URL);
-                // console.log(response);
+                console.log(response);
                 setCompanyList(response);
             } catch (error) {
                 console.error(error.message);

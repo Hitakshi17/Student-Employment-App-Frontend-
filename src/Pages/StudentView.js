@@ -7,7 +7,7 @@ function StudentView() {
 
     const [studentDetail, setStudentDetail] = useState({});
 
-    const URL = "http://localhost:8080/api/student/4"
+    const URL = "http://localhost:8080/api/students/4"
 
     useEffect(() => {
         const fetchData = async () => {
