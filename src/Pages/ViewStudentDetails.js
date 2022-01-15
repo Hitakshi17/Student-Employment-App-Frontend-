@@ -5,18 +5,18 @@ import "../App.css"
 
 function MyVerticallyCenteredModal(props) {
 
-    const [newCgpa, setNewCgpa] = useState(0);
-    const [skills, setSkills] = useState(" ");
+    const [newCgpa, setNewCgpa] = useState(props.cgpa);
+    const [skills, setSkills] = useState(props.t_skills);
 
     const handleSubmit = async (e) => {
 
-        console.log(newCgpa)
-        console.log(skills);
+
+        e.preventDefault()
 
         try {
             const res = await axios.put('http://localhost:8080/api/students/',
                 {
-                    std_id: 7,
+                    std_id: 2,
                     cgpa: newCgpa,
                     t_skills: skills,
                 });
@@ -24,6 +24,9 @@ function MyVerticallyCenteredModal(props) {
         } catch (error) {
             console.error(error.message);
         };
+
+        props.onHide();
+        props.setUpdated(true);
 
     }
 
@@ -44,19 +47,18 @@ function MyVerticallyCenteredModal(props) {
                 <Form>
                     <Form.Group className="mb-3" controlId="cgpa">
                         <Form.Label>CGPA</Form.Label>
-                        <Form.Control type="number" placeholder="Enter New CGPA" onChange={(e) => setNewCgpa(e.target.value)} />
+                        <Form.Control type="number" placeholder="Enter New CGPA" onChange={(e) => setNewCgpa(e.target.value)} required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="t_skills">
                         <Form.Label>Edit Technical Skills </Form.Label>
-                        <Form.Control type="text" placeholder="t_skills" onChange={(e) => setSkills(e.target.value)} />
+                        <Form.Control type="text" placeholder="t_skills" onChange={(e) => setSkills(e.target.value)} required />
                     </Form.Group>
                 </Form>
 
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={handleSubmit} className='btn btn-success' type="submit"> Edit </Button>
-                <Button onClick={props.onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
     );
@@ -67,11 +69,12 @@ function MyVerticallyCenteredModal(props) {
 function ViewStudentDetails() {
 
     const [studentDetail, setStudentDetail] = useState({});
+    const [updated, setUpdated] = useState(false)
 
     // Modal Form for edit details 
     const [modalShow, setModalShow] = React.useState(false);
 
-    const URL = "http://localhost:8080/api/students/7"
+    const URL = "http://localhost:8080/api/students/2"
 
     useEffect(() => {
         const fetchData = async () => {
@@ -86,7 +89,7 @@ function ViewStudentDetails() {
         }
 
         fetchData();
-    }, [studentDetail.cgpa, studentDetail.t_skills]);
+    }, [updated]);
 
     return (
         <main className='container StudentDetail'>
@@ -101,7 +104,7 @@ function ViewStudentDetails() {
                     <h4 className="card-text">{studentDetail.semail}</h4>
                     <p className="card-text">{studentDetail.clg}</p>
                     <p className="card-text">{studentDetail.cgpa}</p>
-                    <p className="card-text">{studentDetail.t_skills}</p>
+                    <p className="card-text text-capitalize">{studentDetail.t_skills}</p>
                     <button className='btn btn-primary' onClick={() => setModalShow(true)} >edit your details</button>
                 </div>
 
@@ -110,6 +113,9 @@ function ViewStudentDetails() {
             <MyVerticallyCenteredModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
+                setUpdated={setUpdated}
+                cgpa={studentDetail.cgpa}
+                t_skills={studentDetail.t_skills}
             />
 
         </main>

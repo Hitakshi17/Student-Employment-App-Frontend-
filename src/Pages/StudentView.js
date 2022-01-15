@@ -7,13 +7,13 @@ function StudentView() {
 
     const [studentDetail, setStudentDetail] = useState({});
 
-    const URL = "http://localhost:8080/api/students/4"
+    const URL = "http://localhost:8080/api/students/2"
 
     useEffect(() => {
         const fetchData = async () => {
 
             try {
-                const { data: response } = await axios.get( URL );
+                const { data: response } = await axios.get(URL);
                 console.log(response);
                 setStudentDetail(response);
             } catch (error) {
@@ -22,15 +22,16 @@ function StudentView() {
         }
 
         fetchData();
-    }, []); 
+    }, []);
 
 
     return (
         <main className='container'>
             <section className='card mt-3 d-flex flex-row justify-content-between p-3 custom-shadow'>
                 <div>
-                    <h1>{ studentDetail.sname }</h1>
-                    <p className='text-secondary'>{ studentDetail.t_skills }</p>
+                    <h1>{studentDetail.sname}</h1>
+                    <p className='text-secondary'>{studentDetail.smob}</p>
+                    <p className='text-secondary'>{studentDetail.semail}</p>
                 </div>
                 <div className="btn-container">
                     <Link to="/student/selectedby">

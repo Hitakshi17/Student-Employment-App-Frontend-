@@ -15,7 +15,6 @@ function CompanyView() {
 
             try {
                 const { data: response } = await axios.get(URL);
-                console.log(response);
                 setCompanyDetail(response);
             } catch (error) {
                 console.error(error.message);
@@ -31,7 +30,7 @@ function CompanyView() {
             <section className='card mt-3 d-flex flex-row justify-content-between p-3 custom-shadow'>
                 <div>
                     <h1>{companyDetail.cname}</h1>
-                    <p className='text-secondary'> {companyDetail.jd} </p>
+                    <p className='text-secondary text-capitalize'> {companyDetail.jd} </p>
                 </div>
                 <div className="btn-container">
                     <Link to="/company/selected">

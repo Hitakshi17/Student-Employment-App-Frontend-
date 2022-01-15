@@ -28,3 +28,8 @@
 .custom-shadow {
   box-shadow: 0px 6px 15px rgba(1, 1, 1, 0.07);
 }
+
+
+.selected {
+  color: yellow;
+}

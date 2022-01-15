@@ -28,7 +28,7 @@ function ViewCompanyDetails() {
                 <h1 className="card-title">{companyDetail.cname}</h1>
                 <h4 className="card-text">{companyDetail.cmob}</h4>
                 <h4 className="card-text">{companyDetail.cemail}</h4>
-                <p className="card-text">{companyDetail.jd}</p>
+                <p className="card-text text-capitalize ">{companyDetail.jd}</p>
                 <a href="#" className="btn btn-primary">Visit our website</a>
             </div>
         </div>

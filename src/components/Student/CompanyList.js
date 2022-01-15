@@ -9,9 +9,9 @@ import "./CompanyList.css"
 
 function MyVerticallyCenteredModal(props) {
 
-    const {...details} = props.details;
+    const { ...details } = props.details;
 
-    
+
     return (
         <Modal
             {...props}
@@ -25,8 +25,8 @@ function MyVerticallyCenteredModal(props) {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h6> Contact Info: {details.cmob} </h6> 
-                 <h6> Email Address: {details.cemail} </h6>
+                <h6> Contact Info: {details.cmob} </h6>
+                <h6> Email Address: {details.cemail} </h6>
                 <p>
                     {details.jd}
                 </p>
@@ -61,6 +61,11 @@ function CompanyList() {
     }, []);
 
 
+    const handleOnApply = () => {
+
+    }
+
+
     const [modalShow, setModalShow] = React.useState(false);
     const [modalData, setModalData] = useState({})
 
@@ -69,40 +74,42 @@ function CompanyList() {
         <main className='companyList'>
             {
 
-                companyList.map(company => {
+                companyList?.length === 0 ?
+                    <h1>No Companies To Display</h1>
+                    : (companyList?.map(company => {
 
-                    const { comp_id, cname, jd, cmob, cemail } = company; 
+                        const { comp_id, cname, jd, cmob, cemail } = company;
 
 
-                    return (
-                        <section key = {comp_id} 
-                        className='card card-box p-3 d-flex flex-row justify-content-between mt-3'>
+                        return (
+                            <section key={comp_id}
+                                className='card card-box p-3 d-flex flex-row justify-content-between mt-3'>
 
-                            <div className=' col-md-9 '>
-                                <button 
-                                className="custom-btn"
-                                    onClick={() => {
-                                        setModalShow(true);
-                                        setModalData(company);
-                                    }}
-                                >
-                                    <h3>
-                                        {cname}
-                                    </h3>
-                                </button>
-                                <p>{jd}</p>
-                            </div>
+                                <div className=' col-md-9 '>
+                                    <button
+                                        className="custom-btn"
+                                        onClick={() => {
+                                            setModalShow(true);
+                                            setModalData(company);
+                                        }}
+                                    >
+                                        <h3>
+                                            {cname}
+                                        </h3>
+                                    </button>
+                                    <p className='text-capitalize'>{jd}</p>
+                                </div>
 
-                            <div className="button-container d-flex align-items-center justify-content-between col-md-2">
-                                <button type="submit" className='btn btn-success'>Accept</button>
-                                <button type="submit" className='btn btn-danger'>Reject</button>
-                            </div>
+                                <div className="button-container d-flex align-items-center justify-content-between col-md-2">
+                                    <button type="submit" className='btn btn-success' onClick={handleOnApply}>Apply</button>
+                                    <button type="submit" className='btn btn-danger'>Reject</button>
+                                </div>
 
-                            
 
-                        </section>
-                    )
-                })
+
+                            </section>
+                        )
+                    }))
 
             }
 
