@@ -9,8 +9,6 @@ function SelectedStudent() {
     const [studentSelectedList, setStudentSelectedList] = useState([]);
 
 
-    const URL = "http://localhost:8080/api/selections/selectedstudentlist/2"
-
     useEffect(() => {
 
         const fetchData = async () => {

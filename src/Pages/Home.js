@@ -6,7 +6,7 @@ function Home() {
         <section>
             <div className='homePage'>
                 <img src="https://www.careereducation.columbia.edu/sites/default/files/styles/main/public/main-images/Edmonson_CCEStockPhoto-138.jpg?itok=V9GakLV3" alt='home'/>
-                <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni totam ipsum facilis provident perspiciatis quisquam fugit a aliquid sequi voluptatibus! </p>
+                <p> Join with us to make you new journey smoother. Consult now. </p>
             </div>
         </section>
     )

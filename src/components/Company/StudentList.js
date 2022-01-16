@@ -41,6 +41,10 @@ function StudentList() {
 
     const [isAppliedList, setIsAppliedList] = useState([]);
     const [studentList, setStudentList] = useState([]);
+    const [modalShow, setModalShow] = React.useState(false);
+    const [modalData, setModalData] = useState({})
+
+    const [updated, setUpdated] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -56,29 +60,67 @@ function StudentList() {
                         setIsAppliedList(obj1.data)
                         setStudentList(obj2.data);
                     }));
-                } catch(err){
-                    console.log(err);
-                }
+            } catch (err) {
+                console.log(err);
+            }
 
         }
 
         fetchData();
-    }, []);
+    }, [updated]);
 
-    let flag = 0;
-    let newfilteredArray = [];
-
+    // let flag = 0;
     console.log(isAppliedList)
-    console.log(studentList);
+    // console.log(studentList);
 
+    // filters the list of student who are already selected or rejected 
+    let newfilteredArray = [];
     for (let item of isAppliedList) {
         newfilteredArray.push(studentList.find(student => student.std_id === item.std_id));
     }
 
     console.log(newfilteredArray);
 
-    const [modalShow, setModalShow] = React.useState(false);
-    const [modalData, setModalData] = useState({})
+    /*
+        functions handling onClick method 
+    */
+
+    const handleOnAccept = async (std_id) => {
+
+        try {
+            const res = await axios.put("http://localhost:8080/api/selections/",
+                {
+                    comp_id: 2,
+                    std_id: std_id,
+                    is_select: 1,
+                    is_applied: 1,
+                });
+            console.log(res);
+            setUpdated(true);
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
+    const handleOnReject = async (std_id) => {
+
+        try {
+            const res = await axios.put("http://localhost:8080/api/selections/",
+                {
+                    comp_id: 2,
+                    std_id: std_id,
+                    is_select: 0,
+                    is_applied: 1,
+                });
+            console.log(res);
+            setUpdated(true);
+        }
+        catch (err) {
+            console.log(err)
+        }
+
+    }
 
 
     return (
@@ -108,21 +150,21 @@ function StudentList() {
                                 </div>
 
                                 <div className="button-container d-flex align-items-center justify-content-between col-md-2">
-                                    <button type="submit" className='btn btn-success'>Accept</button>
-                                    <button type="submit" className='btn btn-danger' >Reject</button>
+                                    <button type="submit" className='btn btn-success' onClick={() => handleOnAccept(element?.std_id)} >Accept</button>
+                                    <button type="submit" className='btn btn-danger' onClick={() => handleOnReject(element?.std_id)} >Reject</button>
                                 </div>
 
                             </section>
                         )
                     }))
-                    
+
             }
 
             <MyVerticallyCenteredModal
-                    details={modalData}
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-            /> 
+                details={modalData}
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
 
         </main>
     )

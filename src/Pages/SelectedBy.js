@@ -56,7 +56,7 @@ function SelectedBy() {
                         return (
                             <section key={company?.comp_id} className='container d-flex flex-wrap'>
 
-                                <div className='card card-body border-success col-md-5 m-3 custom-shadow'>
+                                <div className='card card-body col-md-5 m-3 custom-shadow'>
                                     <h3>{company?.cname}</h3>
                                     <h6 className='text-secondary'>{company?.cemail}</h6>
                                     <h6 className='text-secondary'>{company?.cmob}</h6>
