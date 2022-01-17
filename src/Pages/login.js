@@ -29,10 +29,10 @@ function Login() {
               </div>
 
               <div className="text-left mt-3">
-                New user student<a href="/Signup"><small className="reset ml-2"></small> Registration Student</a>
+                New user student<a href="/Signup"><small className="reset ml-2"></small> register</a>
               </div>
               <div className="text-left mt-3">
-                New user company<a href="/signup2"><small className="reset ml-2"></small> Registration Company</a>
+                New user company<a href="/signup2"><small className="reset ml-2"></small> register2</a>
               </div>
             </Form>
           </Col>
