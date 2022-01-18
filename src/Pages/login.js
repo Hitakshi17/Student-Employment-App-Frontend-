@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 function Login() {
   return (
@@ -24,15 +25,19 @@ function Login() {
               </Form.Group>
 
               <div className=" gap-1">
-                <Button id='but1' variant="primary" type="submit">Login as Company</Button> &nbsp;
-                <Button variant="primary " type="submit">Login as Student</Button>
+                <Link to="/company">
+                  <Button id='but1' variant="primary" type="submit">Login as Company</Button> &nbsp;
+                </Link>
+                <Link to="/student">
+                  <Button variant="primary " type="submit">Login as Student</Button>
+                </Link>
               </div>
 
               <div className="text-left mt-3">
-                New user student<a href="/Signup"><small className="reset ml-2"></small> register</a>
+                New user student<Link to="/signup"><small className="reset ml-2"></small> Click Here </Link>
               </div>
               <div className="text-left mt-3">
-                New user company<a href="/signup2"><small className="reset ml-2"></small> register2</a>
+                New user company<Link to="/signup2"><small className="reset ml-2"></small> Click Here </Link>
               </div>
             </Form>
           </Col>

@@ -14,7 +14,7 @@ function StudentView() {
 
             try {
                 const { data: response } = await axios.get(URL);
-                console.log(response);
+                //console.log(response);
                 setStudentDetail(response);
             } catch (error) {
                 console.error(error.message);
