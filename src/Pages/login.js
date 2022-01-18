@@ -23,7 +23,6 @@ function Login() {
                 <Form.Control type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password"
                   required />
               </Form.Group>
-
               <div className=" gap-1">
                 <Link to="/company">
                   <Button id='but1' variant="primary" type="submit">Login as Company</Button> &nbsp;
