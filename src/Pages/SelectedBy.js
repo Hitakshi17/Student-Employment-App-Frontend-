@@ -48,7 +48,7 @@ function SelectedBy() {
             <h1>Company That Selected You</h1>
 
             {
-                newfilteredArray?.length == 0 ?
+                newfilteredArray?.length === 0 ?
                     <h2>No Companies To Display</h2>
 
                     : (newfilteredArray?.map(company => {

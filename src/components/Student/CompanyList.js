@@ -71,13 +71,13 @@ function CompanyList() {
     }, [update]);
 
 
-    // console.log(isSelectedList)
-    console.log(companyList);
-    // console.log(selectionList);
+    //console.log(isSelectedList)
+    // console.log(companyList);
+    console.log(selectionList);
 
 
 
-    // filters the company which already selected that particular student 
+    // filters the company which already selected that particular student   // is select 1 is applied 1 this is for tanmay 
     let newfilteredArray = [];
     if (isSelectedList.lenght > 0) {
         for (let item of isSelectedList) {
@@ -88,9 +88,9 @@ function CompanyList() {
                 }
             }
         }
-    } 
-    
-    if(isSelectedList.length === 0){
+    }
+
+    if (isSelectedList.length === 0) {
         for (let company of companyList) {
             newfilteredArray.push(company);
         }
@@ -100,7 +100,7 @@ function CompanyList() {
 
 
 
-    
+
     // filters the selection List by particular student 
     let newfilteredSelectionArray = [];
     for (let item of selectionList) {
@@ -109,7 +109,7 @@ function CompanyList() {
         }
     }
 
-    // console.log(newfilteredSelectionArray);
+    console.log(newfilteredSelectionArray);
 
     var flag;
     const istrue = (comp_id) => {
@@ -117,13 +117,13 @@ function CompanyList() {
         for (let item of newfilteredSelectionArray) {
             var id = item.comp_id
             if (id === parseInt(comp_id)) {
-                console.log(id, comp_id);
+                // console.log(id, comp_id);
                 flag = true;
                 break;
             }
 
             else {
-                console.log(id, comp_id);
+                //console.log(id, comp_id);
                 flag = false;
             }
         }
@@ -135,7 +135,7 @@ function CompanyList() {
     // }
 
 
-    
+
 
     const handleOnApply = async (comp_id) => {
 

@@ -20,10 +20,10 @@ import About from './Pages/about';
 import Login from './Pages/login';
 import Form from './components/chatbot/form';
 import bot from '../src/bot.png'
-import Register from './Pages/register';
-import Register2 from './Pages/register2';
+import Register from './Pages/StudentSignUp';
+import Register2 from './Pages/CompanySignUp';
 
-const App = (props) => {
+const App = () => {
 
   let [showChat, setShowChat] = useState(false);
   const startChat = () => { setShowChat(true); }
@@ -59,8 +59,8 @@ const App = (props) => {
               <Route exact path="/contact" element={<Contact />} />
               <Route exact path="/about" element={<About />} />
               <Route exact path="/login" element={<Login />} />
-              <Route exact path="/Signup" element={<Register />} />
-              <Route exact path="/Signup2" element={<Register2 />} />
+              <Route exact path="/signup" element={<Register />} />
+              <Route exact path="/signup2" element={<Register2 />} />
 
             </Routes>
 

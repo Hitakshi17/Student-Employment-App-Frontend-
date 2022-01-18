@@ -70,8 +70,8 @@ function StudentList() {
     }, [updated]);
 
     // let flag = 0;
-    console.log(isAppliedList)
-    // console.log(studentList);
+     console.log(isAppliedList)
+     console.log(studentList);
 
     // filters the list of student who are already selected or rejected 
     let newfilteredArray = [];
@@ -79,7 +79,7 @@ function StudentList() {
         newfilteredArray.push(studentList.find(student => student.std_id === item.std_id));
     }
 
-    console.log(newfilteredArray);
+     console.log(newfilteredArray);
 
     /*
         functions handling onClick method 
@@ -106,12 +106,10 @@ function StudentList() {
     const handleOnReject = async (std_id) => {
 
         try {
-            const res = await axios.put("http://localhost:8080/api/selections/",
+            const res = await axios.put("http://localhost:8080/api/selections/delete",
                 {
                     comp_id: 2,
                     std_id: std_id,
-                    is_select: 0,
-                    is_applied: 1,
                 });
             console.log(res);
             setUpdated(true);
