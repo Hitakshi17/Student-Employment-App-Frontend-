@@ -23,7 +23,7 @@ function Login() {
                   required />
               </Form.Group>
 
-              <div className=" gap-1">
+              <div>
                 <Button id='but1' variant="primary" type="submit">Login as Company</Button> &nbsp;
                 <Button variant="primary " type="submit">Login as Student</Button>
               </div>
